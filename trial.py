@@ -1,6 +1,6 @@
 import random
-# import string
-# from user import User
+import pyperclip
+import time
 from credential import Credential
 
 
@@ -133,6 +133,20 @@ def main():
                     f"Email address.......{search_credential.password}")
             else:
                 print("The credential does not exist")
+        
+        elif short_code == "cp":
+            print("Enter the platform whose password you would like copied")
+            platform_find = input()
+            print("Loading...")
+            if check_existing_credential(platform_find):
+                search_credential = find_credentials(platform_find)
+                pyperclip.copy(search_credential.password)
+                time.sleep(1.5)
+                print("\n")
+                print("Password for {} has been copied!".format(search_credential.platform))
+
+            else:
+                print("The platform you entered does not exist")
 
         elif short_code == "ex":
             print("Tschuss .......")
