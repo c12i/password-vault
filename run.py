@@ -102,8 +102,8 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
     while True:
         print("""
         Use the following short codes to manage your account 
-            1. 'su' - Sign Up
-            2. 'xx' - Close app
+            'su' - Sign Up
+            'xx' - Close app
             """)
         print("What would you like to do?")
         code = input().lower()
@@ -136,12 +136,12 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
     WELCOME TO YOUR VAULT:
     Use the following commands to navigate the application:
 
-        1. 'cc' - enables you to create an a credential
-        2. 'dc' - displays the credentials you have saved
-        3. 'cp' - copies the password of a given credential
-        4. 'fc' - helps you find a credential by its platform name
-        5. 'ex' - logs you out
-        6. 'help' - helps a user around the app
+        'cc' - enables you to create an a credential
+        'dc' - displays the credentials you have saved
+        'cp' - copies the password of a given credential
+        'fc' - helps you find a credential by its platform name
+        'ex' - logs you out
+        'help' - helps a user around the app
                         """)
                     print(f"At your service {sign_in_name}, what task would you like to perform?")
                     key_word = input().lower()
