@@ -23,13 +23,14 @@ A simple python program which runs on the terminal. The app, securely stores a u
 * Once python is installed, install the folowing external libraries using pip:
     * **`pip3 install pyperclip`**
     * **`pip3 install termcolor`**
+    * **`pip3 install unittest`**
 
 ## Setup/Installation
 To user the appliction, first make sure you have installd the required modules from above as well as have python 3.+ installed in your computer.
 Here is a run through of how to set up the application:
 * **Step 1** : Clone this repository using **`git clone https://github.com/collinsmuriuki/password-vault.git`**, or downloading a ZIP file of the code.
 * **Step 2** : The repository, if downloaded as a .zip file will need to be extracted to your preferred location and opened
-* **Step 3** : Open the terminal, go to the project directory and run the folloing commands: **`chmod +x run.py`** and **`./run.py`** respectively to launch the program.
+* **Step 3** : Open the terminal, go to the project directory and run the following commands: **`chmod +x run.py`** and **`./run.py`** respectively to launch the program.
 
 ## Description
 * The program utilizes two classes:- User and Credential.
