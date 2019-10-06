@@ -221,7 +221,7 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                             pyperclip.copy(search_credential.password)
                             time.sleep(1.5)
                             print("\n")
-                            cprint(f"Password for {search_credential.platform} has been copied!","green")
+                            cprint(f"PASSWORD FOR {search_credential.platform} HAS BEEN COPIED","green",attrs=['bold'])
                             print("_"*50)
 
                         else:
