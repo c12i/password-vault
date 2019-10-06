@@ -1,6 +1,7 @@
 import random
 import pyperclip
 import time
+from termcolor import colored, cprint
 from credential import Credential
 from user import User
 
@@ -79,7 +80,7 @@ def generate_password(length):
 
 
 def main():
-    print("""
+    cprint("""
 
                  _   |~  _
                 [_]--'--[_]
@@ -98,24 +99,22 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
 
     GREETINGS USER, WELCOME TO THE PASSWORD VAULT                                         
                 
-        """)
+        ""","blue")
     while True:
-        print("""
+        cprint("""
         Use the following short codes to manage your account 
             'su' - Sign Up
             'xx' - Close app
-            """)
+            ""","blue")
         print("What would you like to do?")
         code = input().lower()
         if code == "su":
-            print("Enter your username")
-            login_name = input()
-            print("Enter your pin")
-            login_pin = input()
+            login_name = input("Enter your username: ")
+            login_pin = input("Enter your pin: ")
             print("Loading ...")
             time.sleep(1.5)
             print("\n")
-            print("Congratulations, your account has been created")
+            cprint("CONGRATULATIONS, YOUR ACCOUNT HAS BEEN CREATED","green",attrs=['bold'])
             print("Sign into your new account")
             sign_in_name = input("Enter your username: ")
             sign_in_pin = input("Enter your pin: ")
@@ -123,13 +122,13 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
             authenticate_user(sign_in_name,sign_in_pin)
             print("Please wait...")
             time.sleep(1.5)
-            print("Successfuly logged in")  
+            cprint("Successfuly logged in","green")  
             print("\n")
             pass
             while True:
                 if authenticate_user(sign_in_name,sign_in_pin):
                     ####
-                    print(
+                    cprint(
                         """
     O===[====================-
         
@@ -142,35 +141,30 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
         'fc' - helps you find a credential by its platform name
         'ex' - logs you out
         'help' - helps a user around the app
-                        """)
+                        ""","blue")
                     print(f"At your service {sign_in_name}, what task would you like to perform?")
                     key_word = input().lower()
 
                     if key_word == 'cc':
-                        print("New Credential")
-                        print("-"*10)
-
+                        print("Save a new credential")
                         platform = input("Input the platform: ")
-                        print("_"*50)
+                        print("\n")
                         username = input("Input your username: ")
-                        print("_"*50)
+                        print("\n")
                         email = input("Input your email: ")
-                        print("_"*50)
+                        print("\n")
                         option = input("Would you wish to have Vault generate a password for you? Y or N ").lower()
                         if option.startswith("y"):
-                            print("_"*50)
-                            print("How long would you like your password to be?")
-                            desired_len = int(input())
+                            print()
+                            desired_len = int(input("How long would you like your password to be? Provide number only"))
                             password = generate_password(desired_len)
                         else:
-                            print("_"*50)
-                            print("Enter your password ...")
-                            password = input()
+                            print("\n")
+                            password = input("Enter your password: ")
 
-                        # create and save new contact.
                         save_credential(create_credential(platform,username,email,password))
                         print('\n')
-                        print(f"NEW CREDENTIALS FOR {platform} CREATED!")
+                        cprint(f"NEW CREDENTIALS FOR {platform} CREATED!","green",attrs=['bold'])
                         print("_"*50)
                         print('\n')
 
@@ -182,7 +176,7 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                             print('\n')
 
                             for cred in display_credentials():
-                                print(
+                                cprint(
                                     f"""
     --------------------------------------------------
             Platform --- {cred.platform}               
@@ -190,12 +184,12 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
             Email    --- {cred.email}                  
             Password --- {cred.password}               
     --------------------------------------------------
-                                """
+                                ""","magenta"
                                 )
                                 print('\n')
                         else:
                             print('\n')
-                            print("You dont seem to have any credentials saved yet")
+                            cprint("You dont seem to have any credentials saved yet","yellow")
                             print("_"*50)
                             print('\n')
 
@@ -205,7 +199,7 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                         platform_search = input().lower()
                         if check_existing_credential(platform_search):
                             search_credential = find_credentials(platform)
-                            print(
+                            cprint(
                                 f"""
     -------------------------------------------------------
         Platform --- {search_credential.platform}               
@@ -213,10 +207,10 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
         Email    --- {search_credential.email}                  
         Password --- {search_credential.password}               
     -------------------------------------------------------
-                                """)
+                                ""","magenta")
                             print("_"*50)
                         else:
-                            print("The credential does not exist")
+                            cprint("The credential does not exist", "red")
                     
                     elif key_word == "cp":
                         print("Enter the platform whose password you would like copied")
@@ -227,11 +221,11 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                             pyperclip.copy(search_credential.password)
                             time.sleep(1.5)
                             print("\n")
-                            print("Password for {} has been copied!".format(search_credential.platform))
+                            cprint(f"Password for {search_credential.platform} has been copied!","green")
                             print("_"*50)
 
                         else:
-                            print("The platform you entered does not exist")
+                            cprint("The platform you entered does not exist","yellow")
                             print("_"*50)
 
                     elif key_word == "ex":
@@ -240,7 +234,7 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                         break
 
                     elif key_word == "help":
-                        print(
+                        cprint(
                         """                       
     SORRY TO HERE YOU'RE STUCK
     PLEASE REFER TO WHAT IS BELOW
@@ -255,19 +249,19 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
         |  |   |__|  \.'\ |   |_|__|  |~~~|__|
         |  |===|--|   \.'\|===|~|--|%%|~~~|--|
         ^--^---'--^    `-'`---^-^--^--^---'--'
-                        """)
+                        ""","blue")
 
                     else:
-                        print("You entered an unknown keyword. Please use the provided keywords. Type '-help' if you're stuck")
+                        cprint("You entered an unknown keyword. Please use the provided keywords. Type '-help' if you're stuck","yellow")
                         print("_"*50)
 
                 else:
-                    print("Oops, you entered the wrong username/pin, we have to do this again :(")
+                    cprint("Oops, you entered the wrong username/pin, we have to do this again :(","red")
                     print("_"*50)
                     break
             
         elif code == "xx":
-            print(
+            cprint(
             """
 $$$$$$\   $$$$$$\   $$$$$$\  $$$$$$$\  $$$$$$$\ $$\     $$\ $$$$$$$$\ 
 $$  __$$\ $$  __$$\ $$  __$$\ $$  __$$\ $$  __$$\\$$\   $$  |$$  _____|
@@ -278,11 +272,11 @@ $$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |   $$ |    $$ |
 \$$$$$$  | $$$$$$  | $$$$$$  |$$$$$$$  |$$$$$$$  |   $$ |    $$$$$$$$\ 
  \______/  \______/  \______/ \_______/ \_______/    \__|    \________|
                                                                       
-            """)
+            ""","blue")
             break
 
         else:
-            print("You entered an unknown short code, please try again")
+            cprint("You entered an unknown short code, please try again","yellow")
         
 if __name__ == '__main__':
     main()
