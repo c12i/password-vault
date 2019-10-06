@@ -103,28 +103,42 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
     while True:
         cprint("""
         Use the following short codes to manage your account 
-            'su' - Sign Up
+            'lg' - Login 
             'xx' - Close app
             ""","blue")
         print("What would you like to do?")
         code = input().lower()
-        if code == "su":
-            login_name = input("Enter your username: ")
-            login_pin = input("Enter your pin: ")
-            print("Loading ...")
-            time.sleep(1.5)
-            print("\n")
-            cprint("CONGRATULATIONS, YOUR ACCOUNT HAS BEEN CREATED","green",attrs=['bold'])
-            print("Sign into your new account")
-            sign_in_name = input("Enter your username: ")
-            sign_in_pin = input("Enter your pin: ")
-            save_user(create_user(login_name,login_pin))
-            authenticate_user(sign_in_name,sign_in_pin)
-            print("Please wait...")
-            time.sleep(1.5)
-            cprint("SUCCESSFULLY SIGNED IN","green",attrs=['bold'])  
-            print("\n")
-            pass
+        if code == "lg":
+            print("Do you have an account? Y or N")
+            decision = input().lower()
+
+            if decision.startswith("n"):
+                login_name = input("Enter your username: ")
+                login_pin = input("Enter your pin: ")
+                print("Loading ...")
+                time.sleep(1.5)
+                print("\n")
+                cprint("CONGRATULATIONS, YOUR ACCOUNT HAS BEEN CREATED","green",attrs=['bold'])
+                print("Sign into your new account")
+                sign_in_name = input("Enter your username: ")
+                sign_in_pin = input("Enter your pin: ")
+                save_user(create_user(login_name,login_pin))
+                authenticate_user(sign_in_name,sign_in_pin)
+                print("Please wait...")
+                time.sleep(1.5)
+                cprint("SUCCESSFULLY SIGNED IN","green",attrs=['bold'])  
+                print("\n")
+                pass
+            else:
+                sign_in_name = input("Enter your username: ")
+                sign_in_pin = input("Enter your pin: ")
+                save_user(create_user(login_name,login_pin))
+                authenticate_user(sign_in_name,sign_in_pin)
+                print("Please wait...")
+                time.sleep(1.5)
+                cprint("SUCCESSFULLY SIGNED IN","green",attrs=['bold'])  
+                print("\n")
+                pass
             while True:
                 if authenticate_user(sign_in_name,sign_in_pin):
                     ####
