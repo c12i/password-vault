@@ -124,7 +124,10 @@ def main():
             if check_existing_credential(platform_search):
                 search_credential = find_credentials(platform)
                 print(
-                    f"{search_credential.platform} {search_credential.password}")
+                    f"""
+                    Platform --- {search_credential.platform} 
+                    Password --- {search_credential.password}
+                    """)
                 print('-' * 20)
 
                 print(
