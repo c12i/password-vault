@@ -131,17 +131,17 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                     ####
                     print(
                         """
-                       O===[====================-
-                            
-                        WELCOME TO YOUR VAULT:
-                        Use the following commands to navigate the application:
+    O===[====================-
+        
+    WELCOME TO YOUR VAULT:
+    Use the following commands to navigate the application:
 
-                            1. 'cc' - enables you to create an a credential
-                            2. 'dc' - displays the credentials you have saved
-                            3. 'cp' - copies the password of a given credential
-                            4. 'fc' - helps you find a credential by its platform name
-                            5. 'ex' - logs you out
-                            6. 'help' - helps a user around the app
+        1. 'cc' - enables you to create an a credential
+        2. 'dc' - displays the credentials you have saved
+        3. 'cp' - copies the password of a given credential
+        4. 'fc' - helps you find a credential by its platform name
+        5. 'ex' - logs you out
+        6. 'help' - helps a user around the app
                         """)
                     print(f"At your service {sign_in_name}, what task would you like to perform?")
                     key_word = input().lower()
@@ -184,12 +184,12 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                             for cred in display_credentials():
                                 print(
                                     f"""
-                                 --------------------------------------------------
-                                            Platform --- {cred.platform}               
-                                            Username --- {cred.username}               
-                                            Email    --- {cred.email}                  
-                                            Password --- {cred.password}               
-                                 --------------------------------------------------
+    --------------------------------------------------
+            Platform --- {cred.platform}               
+            Username --- {cred.username}               
+            Email    --- {cred.email}                  
+            Password --- {cred.password}               
+    --------------------------------------------------
                                 """
                                 )
                                 print('\n')
@@ -207,12 +207,12 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                             search_credential = find_credentials(platform)
                             print(
                                 f"""
-                                 -------------------------------------------------------
-                                        Platform --- {search_credential.platform}               
-                                        Username --- {search_credential.username}               
-                                        Email    --- {search_credential.email}                  
-                                        Password --- {search_credential.password}               
-                                 -------------------------------------------------------
+    -------------------------------------------------------
+        Platform --- {search_credential.platform}               
+        Username --- {search_credential.username}               
+        Email    --- {search_credential.email}                  
+        Password --- {search_credential.password}               
+    -------------------------------------------------------
                                 """)
                             print("_"*50)
                         else:
@@ -242,9 +242,19 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                     elif key_word == "help":
                         print(
                         """                       
-                        SORRY TO HERE YOU'RE STUCK
-                        
+    SORRY TO HERE YOU'RE STUCK
+    PLEASE REFER TO WHAT IS BELOW
 
+            .--.                   .---.
+        .---|__|           .-.     |~~~|
+        .--|===|--|_          |_|     |~~~|--.
+        |  |===|  |'\     .---!~|  .--|   |--|
+        |%%|   |  |.'\    |===| |--|%%|   |  |
+        |%%|   |  |\.'\   |   | |__|  |   |  |
+        |  |   |  | \  \  |===| |==|  |   |  |
+        |  |   |__|  \.'\ |   |_|__|  |~~~|__|
+        |  |===|--|   \.'\|===|~|--|%%|~~~|--|
+        ^--^---'--^    `-'`---^-^--^--^---'--'
                         """)
 
                     else:
