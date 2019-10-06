@@ -12,11 +12,15 @@ class User:
         self.login_name = login_name
         self.pin = pin
 
-    def user_signin(self, username, password):
-        if self.pin == self.pin and self.login_name == username:
-            return True
-        else:
-            return False
+    def save_user(self):
+        User.user_list.append(self)
+
+    @classmethod
+    def user_signin(cls, username, password):
+        for user in User.user_list:
+            if user.login == username and user.password == password:
+                return True
+        return False
 
     @classmethod
     def view_users(cls):

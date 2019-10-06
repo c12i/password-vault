@@ -2,7 +2,20 @@ import random
 import pyperclip
 import time
 from credential import Credential
+from user import User
 
+def create_user(login_name, pin):
+    """
+    Function to create a new user
+    """
+    new_user = User(login_name,pin)
+    return new_user
+
+def save_user(user):
+    """
+    Function to save user details
+    """
+    user.save_user()
 
 def create_credential(platform,username,email,password):
     """
@@ -63,7 +76,11 @@ def generate_password(length):
 
 
 def main():
-    print("Hello Welcome to your vault. What is your name?")
+    print("""
+                GREETINGS USER! WELCOME TO THE PASSWORD VAULT.
+        """)
+    print("Use the following short codes to navigate the application \n lg - Login \n su - Sign Up \n xx - Exit")
+    # code = input()
     user_name = input()
 
     print(f"Hello {user_name}. what would you like to do?")
@@ -152,7 +169,7 @@ def main():
                 print("The platform you entered does not exist")
 
         elif short_code == "ex":
-            print("Have a nice day")
+            print(f"Have a nice day {user_name}")
             break
         else:
             print("I really didn't get that. Please use the short codes")
