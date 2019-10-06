@@ -122,7 +122,7 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
             authenticate_user(sign_in_name,sign_in_pin)
             print("Please wait...")
             time.sleep(1.5)
-            cprint("Successfuly logged in","green")  
+            cprint("SUCCESSFULLY SIGNED IN","green",attrs=['bold'])  
             print("\n")
             pass
             while True:
@@ -156,7 +156,7 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                         option = input("Would you wish to have Vault generate a password for you? Y or N ").lower()
                         if option.startswith("y"):
                             print()
-                            desired_len = int(input("How long would you like your password to be? Provide number only"))
+                            desired_len = int(input("How long would you like your password to be? Provide number only. "))
                             password = generate_password(desired_len)
                         else:
                             print("\n")
