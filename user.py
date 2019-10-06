@@ -29,6 +29,10 @@ class User:
         else:
             return False
 
+    @classmethod
+    def view_users(cls):
+        return User.account_creds
+
     def change_pin(self, oldpin, newpin):
         if self.pin == oldpin:
             self.pin = newpin

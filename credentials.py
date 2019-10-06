@@ -51,7 +51,7 @@ class Credentials:
                 return cred
     
     @classmethod
-    def in_list(cls, name):
+    def credential_exists(cls, name):
         """
         this method checks if a particlar platform has it's credentials saved
         """
