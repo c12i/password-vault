@@ -81,6 +81,12 @@ def generate_password(length):
 def main():
     print("""
 
+                 _   |~  _
+                [_]--'--[_]
+                |'|""`""|'|
+                | | /^\ | |
+                |_|_|I|_|_|
+
  $$\    $$\  $$$$$$\  $$\   $$\ $$\    $$$$$$$$\ 
 $$ |   $$ |$$  __$$\ $$ |  $$ |$$ |   \__$$  __|
 $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |   
@@ -97,7 +103,7 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
         print("""
         Use the following short codes to manage your account 
             1. 'su' - Sign Up
-            2. 'xx' - Log out and exit
+            2. 'xx' - Close app
             """)
         print("What would you like to do?")
         code = input().lower()
@@ -134,7 +140,7 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                             2. 'dc' - displays the credentials you have saved
                             3. 'cp' - copies the password of a given credential
                             4. 'fc' - helps you find a credential by its platform name
-                            5. 'ex' - closes the application
+                            5. 'ex' - logs you out
                             6. 'help' - helps a user around the app
                         """)
                     print(f"At your service {sign_in_name}, what task would you like to perform?")
@@ -144,70 +150,71 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                         print("New Credential")
                         print("-"*10)
 
-                        print("Platform ....")
-                        platform = input()
-
-                        print("Username ...")
-                        username = input()
-
-                        print("Email ...")
-                        email = input()
-
-                        print("Would you wish to have Vault generate a password for you? Y or N")
-                        option = input().lower()
+                        platform = input("Input the platform: ")
+                        print("_"*50)
+                        username = input("Input your username: ")
+                        print("_"*50)
+                        email = input("Input your email: ")
+                        print("_"*50)
+                        option = input("Would you wish to have Vault generate a password for you? Y or N ").lower()
                         if option.startswith("y"):
+                            print("_"*50)
                             print("How long would you like your password to be?")
                             desired_len = int(input())
                             password = generate_password(desired_len)
                         else:
+                            print("_"*50)
                             print("Enter your password ...")
                             password = input()
 
                         # create and save new contact.
                         save_credential(create_credential(platform,username,email,password))
                         print('\n')
-                        print(f"New credentials for {platform} created")
+                        print(f"NEW CREDENTIALS FOR {platform} CREATED!")
+                        print("_"*50)
                         print('\n')
 
                     elif key_word == 'dc':
 
                         if display_credentials():
-                            print("Here is a list of all your credentials")
+                            print("HERE ARE YOUR CREDENTIALS")
+                            print("_"*50)
                             print('\n')
 
                             for cred in display_credentials():
                                 print(
                                     f"""
-                                 ---------------------------------------------------------
-                                | Platform --- {cred.platform}               |
-                                | Username --- {cred.username}               |
-                                | Email    --- {cred.email}                  |
-                                | Password --- {cred.password}               |
-                                 ---------------------------------------------------------
+                                 --------------------------------------------------
+                                            Platform --- {cred.platform}               
+                                            Username --- {cred.username}               
+                                            Email    --- {cred.email}                  
+                                            Password --- {cred.password}               
+                                 --------------------------------------------------
                                 """
                                 )
                                 print('\n')
                         else:
                             print('\n')
                             print("You dont seem to have any credentials saved yet")
+                            print("_"*50)
                             print('\n')
 
                     elif key_word == 'fc':
                         print("Enter the platform you want to search for")
-
+                        print("_"*50)
                         platform_search = input().lower()
                         if check_existing_credential(platform_search):
                             search_credential = find_credentials(platform)
                             print(
                                 f"""
-                                 ---------------------------------------------------------
-                                | Platform --- {search_credential.platform}               |
-                                | Username --- {search_credential.username}               |
-                                | Email    --- {search_credential.email}                  |
-                                | Password --- {search_credential.password}               |
-                                 ---------------------------------------------------------
+                                 -------------------------------------------------------
+                                        Platform --- {search_credential.platform}               
+                                        Username --- {search_credential.username}               
+                                        Email    --- {search_credential.email}                  
+                                        Password --- {search_credential.password}               
+                                 -------------------------------------------------------
                                 """)
-                            print('_' * 50)
+                            print("_"*50)
                         else:
                             print("The credential does not exist")
                     
@@ -221,36 +228,32 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                             time.sleep(1.5)
                             print("\n")
                             print("Password for {} has been copied!".format(search_credential.platform))
+                            print("_"*50)
 
                         else:
                             print("The platform you entered does not exist")
+                            print("_"*50)
 
                     elif key_word == "ex":
                         print(f"Have a nice day {login_name}")
+                        print("_"*50)
                         break
 
                     elif key_word == "help":
                         print(
-                        """
-                       O===[====================-
-                       
+                        """                       
                         SORRY TO HERE YOU'RE STUCK
-                        Here is a run down through all the keyword commands:
+                        
 
-                            1. 'cc' - enables you to create an a credential
-                            2. 'dc' - displays the credentials you have saved
-                            3. 'cp' - copies the password of a given credential
-                            4. 'fc' - helps you find a credential by its platform name
-                            5. 'ex' - closes the application
-                            6. 'help' - helps a user around the app
                         """)
 
                     else:
                         print("You entered an unknown keyword. Please use the provided keywords. Type '-help' if you're stuck")
-                    ####
+                        print("_"*50)
 
                 else:
-                    print("Wrong username/pin")
+                    print("Oops, you entered the wrong username/pin, we have to do this again :(")
+                    print("_"*50)
                     break
             
         elif code == "xx":
@@ -270,12 +273,6 @@ $$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |   $$ |    $$ |
 
         else:
             print("You entered an unknown short code, please try again")
-
-    # user_name = input()
-
-    # print(f"Hello {login_name}. what would you like to do?")
-    # print('\n')
         
-
 if __name__ == '__main__':
     main()
