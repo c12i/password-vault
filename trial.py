@@ -13,7 +13,7 @@ def create_credential(platform,username,email,password):
 
 
 def save_credential(credential):
-   """
+    """
     Function to save credential
     """
     credential.save_credential()
@@ -87,8 +87,15 @@ def main():
             print("Email ...")
             email = input()
 
-            print("Password ...")
-            password = input()
+            print("Would you wish to have Vault generate a password for you? Y or N")
+            option = input().lower()
+            if option.startswith("y"):
+                print("How long would you like your password to be?")
+                desired_len = int(input())
+                password = generate_password(desired_len)
+            else:
+                print("Enter your password ...")
+                password = input()
 
             # create and save new contact.
             save_credential(create_credential(platform,username,email,password))

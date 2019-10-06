@@ -89,5 +89,5 @@ class Credential:
         Args:
             the desired password length
         """
-        letters_and_numbers = string.ascii_letters + string.digits
-        return ''.join(random.choice(letters_and_numbers) for i in range(length))
+        chars = string.ascii_uppercase + string.digits + string.ascii_lowercase
+        return "".join(random.choice(chars) for i in range(length))
