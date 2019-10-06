@@ -21,7 +21,3 @@ class User:
             if user.login_name == name and user.pin == pin:
                 return True
         return False
-
-    @classmethod
-    def view_users(cls):
-        return cls.user_list
