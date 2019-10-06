@@ -15,11 +15,11 @@ class User:
         self.login_name = login_name
         self.pin = pin
 
-    def create_new_user(self, creds):
+    def create_new_user(self, creds):#### might fail
         creds = {self.login_name: Credentials.credential_list}
         User.account_creds.append(creds)
 
-    def delete_user(self, creds):
+    def delete_user(self, creds): #### might fail
         creds = {self.login_name: Credentials.credential_list}
         User.account_creds.remove(creds)
 
@@ -36,5 +36,5 @@ class User:
     def change_pin(self, oldpin, newpin):
         if self.pin == oldpin:
             self.pin = newpin
-        else:
-            return "The pins do not match"
+        # else:
+        #     return "The pins do not match"

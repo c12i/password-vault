@@ -1,33 +1,137 @@
 import random
-import string
-from credentials import Credentials
-from user import User
+# import string
+# from user import User
+from credential import Credential
 
-def create_user(login, pin):
-    pass
 
-def login_to_app(login, pin):
-    pass
+def create_credential(platform,username,email,password):
+    """
+    Function to create a new credential
+    """
+    new_credential = Credential(platform,username,email,password)
+    return new_credential
 
-def create_credentials(paltform, email, username, password):
-    pass
 
-def pass_gen(credential, length):
-    credential.generate_password(length)
+def save_credential(credential):
+   """
+    Function to save credential
+    """
+    credential.save_credential()
 
-def add_credentials(credentials):
-    credentials.add_credentials()
 
-def remove_credentials(credentials):
-    credentials.remove_credentials()
+def delete_credential(credential):
+    """
+    Function to delete a credential
+    """
+    credential.delete_credential()
 
-def find_credentials(name):
-    Credentials.find_credential(name)
 
-def check_if_credential_exists(name):
-    Credentials.credential_exists(name)
+def find_credentials(platform):
+    """
+    Function that finds a credential by platform name and returns the credentials
+    """
+    return Credential.find_by_platform(platform)
+
+
+def check_existing_credential(platform):
+    """
+    Function that check if a credential exists with that number and return a Boolean
+    """
+    return Credential.credential_exists(platform)
+
 
 def display_credentials():
-    pass
+    """
+    Function that returns all the saved credentials
+    """
+    return Credential.display_credentials()
+
+def copy_password(platform):
+    """
+    Function which copies the password of the platform
+    taken as an argument
+    """
+    return Credential.copy_password(platform)
+
+def generate_password(length):
+    """
+    Function which generates a random password
+    Args:
+        the desired password length
+    """
+    return Credential.generate_password(length)
 
 
+def main():
+    print("Hello Welcome to your vault. What is your name?")
+    user_name = input()
+
+    print(f"Hello {user_name}. what would you like to do?")
+    print('\n')
+
+    while True:
+        print("Use these short codes :\n cc - create a new credential \n dc - display credentials \n fc - find a credential \n ex - exit the vault")
+
+        short_code = input().lower()
+
+        if short_code == 'cc':
+            print("New Credential")
+            print("-"*10)
+
+            print("Platform ....")
+            platform = input()
+
+            print("Username ...")
+            username = input()
+
+            print("Email ...")
+            email = input()
+
+            print("Password ...")
+            password = input()
+
+            # create and save new contact.
+            save_credential(create_credential(platform,username,email,password))
+            print('\n')
+            print(f"New credentials for {platform} created")
+            print('\n')
+
+        elif short_code == 'dc':
+
+            if display_credentials():
+                print("Here is a list of all your credentials")
+                print('\n')
+
+                for cred in display_credentials():
+                    print(f"{cred.platform} {cred.username} .....{cred.password}")
+                    print('\n')
+            else:
+                print('\n')
+                print("You dont seem to have any credentials saved yet")
+                print('\n')
+
+        elif short_code == 'fc':
+            print("Enter the platform you want to search for")
+
+            platform_search = input().lower()
+            if check_existing_credential(platform_search):
+                search_credential = find_credentials(platform)
+                print(
+                    f"{search_credential.platform} {search_credential.password}")
+                print('-' * 20)
+
+                print(
+                    f"Phone number.......{search_credential.username}")
+                print(
+                    f"Email address.......{search_credential.password}")
+            else:
+                print("The credential does not exist")
+
+        elif short_code == "ex":
+            print("Tschuss .......")
+            break
+        else:
+            print("I really didn't get that. Please use the short codes")
+
+if __name__ == '__main__':
+    main()
