@@ -152,7 +152,7 @@ def main():
                 print("The platform you entered does not exist")
 
         elif short_code == "ex":
-            print("Tschuss .......")
+            print("Have a nice day")
             break
         else:
             print("I really didn't get that. Please use the short codes")
