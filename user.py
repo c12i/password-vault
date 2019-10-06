@@ -29,11 +29,6 @@ class User:
         else:
             return False
 
-    def user_signout(self, choice):
-        if choice:
-            return True
-        return False
-
     def change_pin(self, oldpin, newpin):
         if self.pin == oldpin:
             self.pin = newpin
