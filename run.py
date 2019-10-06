@@ -80,16 +80,27 @@ def generate_password(length):
 
 def main():
     print("""
-                GREETINGS USER! WELCOME TO THE PASSWORD VAULT.
+
+ $$\    $$\  $$$$$$\  $$\   $$\ $$\    $$$$$$$$\ 
+$$ |   $$ |$$  __$$\ $$ |  $$ |$$ |   \__$$  __|
+$$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |   
+\$$\  $$  |$$$$$$$$ |$$ |  $$ |$$ |      $$ |   
+ \$$\$$  / $$  __$$ |$$ |  $$ |$$ |      $$ |   
+  \$$$  /  $$ |  $$ |$$ |  $$ |$$ |      $$ |   
+   \$  /   $$ |  $$ |\$$$$$$  |$$$$$$$$\ $$ |   
+    \_/    \__|  \__| \______/ \________|\__|   
+
+    GREETINGS USER, WELCOME TO THE PASSWORD VAULT                                         
+                
         """)
     while True:
         print("""
-            Use the following short codes to manage your account 
-                1. 'su' - Sign Up
-                2. 'xx' - Log out and exit
+        Use the following short codes to manage your account 
+            1. 'su' - Sign Up
+            2. 'xx' - Log out and exit
             """)
         print("What would you like to do?")
-        code = input()
+        code = input().lower()
         if code == "su":
             print("Enter your username")
             login_name = input()
@@ -103,16 +114,19 @@ def main():
             sign_in_name = input("Enter your username: ")
             sign_in_pin = input("Enter your pin: ")
             save_user(create_user(login_name,login_pin))
+            authenticate_user(sign_in_name,sign_in_pin)
+            print("Please wait...")
+            time.sleep(1.5)
+            print("Successfuly logged in")  
+            print("\n")
             pass
             while True:
                 if authenticate_user(sign_in_name,sign_in_pin):
-                    print("Please wait...")
-                    time.sleep(1.5)
-                    print("Successfuly logged in")  
-                    print("\n")
                     ####
                     print(
                         """
+                       O===[====================-
+                            
                         WELCOME TO YOUR VAULT:
                         Use the following commands to navigate the application:
 
@@ -162,7 +176,16 @@ def main():
                             print('\n')
 
                             for cred in display_credentials():
-                                print(f"{cred.platform} {cred.username} .....{cred.password}")
+                                print(
+                                    f"""
+                                 ---------------------------------------------------------
+                                | Platform --- {cred.platform}               |
+                                | Username --- {cred.username}               |
+                                | Email    --- {cred.email}                  |
+                                | Password --- {cred.password}               |
+                                 ---------------------------------------------------------
+                                """
+                                )
                                 print('\n')
                         else:
                             print('\n')
@@ -177,15 +200,14 @@ def main():
                             search_credential = find_credentials(platform)
                             print(
                                 f"""
-                                Platform --- {search_credential.platform} 
-                                Password --- {search_credential.password}
+                                 ---------------------------------------------------------
+                                | Platform --- {search_credential.platform}               |
+                                | Username --- {search_credential.username}               |
+                                | Email    --- {search_credential.email}                  |
+                                | Password --- {search_credential.password}               |
+                                 ---------------------------------------------------------
                                 """)
-                            print('-' * 20)
-
-                            print(
-                                f"Phone number.......{search_credential.username}")
-                            print(
-                                f"Email address.......{search_credential.password}")
+                            print('_' * 50)
                         else:
                             print("The credential does not exist")
                     
@@ -210,6 +232,8 @@ def main():
                     elif key_word == "help":
                         print(
                         """
+                       O===[====================-
+                       
                         SORRY TO HERE YOU'RE STUCK
                         Here is a run down through all the keyword commands:
 
@@ -230,7 +254,18 @@ def main():
                     break
             
         elif code == "xx":
-            print("See you again")
+            print(
+            """
+$$$$$$\   $$$$$$\   $$$$$$\  $$$$$$$\  $$$$$$$\ $$\     $$\ $$$$$$$$\ 
+$$  __$$\ $$  __$$\ $$  __$$\ $$  __$$\ $$  __$$\\$$\   $$  |$$  _____|
+$$ /  \__|$$ /  $$ |$$ /  $$ |$$ |  $$ |$$ |  $$ |\$$\ $$  / $$ |      
+$$ |$$$$\ $$ |  $$ |$$ |  $$ |$$ |  $$ |$$$$$$$\ | \$$$$  /  $$$$$\    
+$$ |\_$$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |$$  __$$\   \$$  /   $$  __|   
+$$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |   $$ |    $$ |      
+\$$$$$$  | $$$$$$  | $$$$$$  |$$$$$$$  |$$$$$$$  |   $$ |    $$$$$$$$\ 
+ \______/  \______/  \______/ \_______/ \_______/    \__|    \________|
+                                                                      
+            """)
             break
 
         else:
