@@ -16,18 +16,12 @@ class User:
         User.user_list.append(self)
 
     @classmethod
-    def user_signin(cls, username, password):
-        for user in User.user_list:
-            if user.login == username and user.password == password:
+    def user_auth(cls,name,pin):
+        for user in cls.user_list:
+            if user.login_name == name and user.pin == pin:
                 return True
         return False
 
     @classmethod
     def view_users(cls):
-        return User.user_list
-
-    def change_pin(self, oldpin, newpin):
-        if self.pin == oldpin:
-            self.pin = newpin
-        # else:
-        #     return "The pins do not match"
+        return cls.user_list
