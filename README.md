@@ -7,7 +7,7 @@
 [**Collins Muriuki**](https://github.com/collinsmuriuki)
 
 ## Description
-A simple python program which runs on the terminal. The app, securely stores a user's account credentials for varous platforms and also generates passwords for a user's new or existing accounts using the inbuilt random library.
+A simple python program which runs on the terminal. The app, securely stores a user's account credentials for varous platforms and also generates passwords for a user's new or existing accounts using the inbuilt random and string libraries.
 
 ## Technologies Used
 * Python 3.7.4
@@ -15,6 +15,7 @@ A simple python program which runs on the terminal. The app, securely stores a u
     * pyperclip
     * random (inbuilt)
     * time (inbuilt)
+    * getpass (inbuilt)
     * termcolor
     * unittest
 
