@@ -1,4 +1,4 @@
-# Password_Locker
+# Password-Vault
 ####  A Python program which stores and secures your passwords as well as generates new strong user passwords.
 ![alt text](images/scr2.jpg)
 ![alt text](images/scr1.jpg)
