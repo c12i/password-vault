@@ -198,7 +198,6 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
 
                         if display_credentials():
                             print("HERE ARE YOUR CREDENTIALS")
-                            print("_"*50)
                             print('\n')
 
                             for cred in display_credentials():
