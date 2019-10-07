@@ -133,7 +133,6 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
             else:
                 sign_in_name = input("Enter your username: ")
                 sign_in_pin = input("Enter your pin: ")
-                save_user(create_user(login_name,login_pin))
                 authenticate_user(sign_in_name,sign_in_pin)
                 print("Please wait...")
                 time.sleep(1.5)
@@ -154,6 +153,7 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
         'dc' - displays the credentials you have saved
         'cp' - copies the password of a given credential
         'fc' - helps you find a credential by its platform name
+        'dl' - deletes a credential
         'ex' - logs you out
         'help' - helps a user around the app
                         ""","blue")
@@ -210,10 +210,10 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
 
                     elif key_word == 'fc':
                         print("Enter the platform you want to search for")
-                        print("_"*50)
-                        platform_search = input().lower()
+                        print("\n")
+                        platform_search = input()
                         if check_existing_credential(platform_search):
-                            search_credential = find_credentials(platform)
+                            search_credential = find_credentials(platform_search)
                             cprint(
                                 f"""
     -------------------------------------------------------
@@ -242,6 +242,19 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                         else:
                             cprint("The platform you entered does not exist","yellow")
                             print("_"*50)
+                    
+                    elif key_word == "dl":
+                        print("Enter the platform whose credentials you'd like to delete")
+                        print("\n")
+                        platform_delete = input()
+                        if check_existing_credential(platform_delete):
+                            print("Please wait ...")
+                            platform_creds = find_credentials(platform_delete)
+                            delete_credential(platform_creds)
+                            time.sleep(1.5)
+                            cprint("CREDENTIALS FOR {platform_creds.platform} SUCCESSFULY DELETED","green",attrs=['bold'])
+                        else:
+                            cprint("The credential does not exist", "red")
 
                     elif key_word == "ex":
                         print(f"Have a nice day {login_name}")
