@@ -55,6 +55,7 @@ Here is a run through of how to set up the application:
     * **dc**: Displays credential
     * **cp**: Copies password to clipboard
     * **fc**: Finds credential
+    * **dl**: Deletes credential
     * **ex**: Logs user out of th session
     * **help**: Provides guidance
 
