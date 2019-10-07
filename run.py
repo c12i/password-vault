@@ -124,21 +124,31 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                 sign_in_name = input("Enter your username: ")
                 sign_in_pin = input("Enter your pin: ")
                 save_user(create_user(login_name,login_pin))
-                authenticate_user(sign_in_name,sign_in_pin)
-                print("Please wait...")
-                time.sleep(1.5)
-                cprint("SUCCESSFULLY SIGNED IN","green",attrs=['bold'])  
-                print("\n")
-                pass
+                if authenticate_user(sign_in_name,sign_in_pin):
+                    print("Please wait...")
+                    time.sleep(1.5)
+                    cprint("SUCCESSFULLY SIGNED IN","green",attrs=['bold'])  
+                    print("\n")
+                    pass
+                else:
+                    print("Please wait...")
+                    time.sleep(1.5)
+                    # cprint("Oops, you entered the wrong username/pin, we have to do this again :(","red")
+                    print("\n")
             else:
                 sign_in_name = input("Enter your username: ")
                 sign_in_pin = input("Enter your pin: ")
-                authenticate_user(sign_in_name,sign_in_pin)
-                print("Please wait...")
-                time.sleep(1.5)
-                cprint("SUCCESSFULLY SIGNED IN","green",attrs=['bold'])  
-                print("\n")
-                pass
+                if authenticate_user(sign_in_name,sign_in_pin):
+                    print("Please wait...")
+                    time.sleep(1.5)
+                    cprint("SUCCESSFULLY SIGNED IN","green",attrs=['bold'])  
+                    print("\n")
+                    pass
+                else:
+                    print("Please wait...")
+                    time.sleep(1.5)
+                    # cprint("Oops, you entered the wrong username/pin, we have to do this again :(","red")
+                    print("\n")
             while True:
                 if authenticate_user(sign_in_name,sign_in_pin):
                     ####
@@ -284,8 +294,8 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                         print("_"*50)
 
                 else:
-                    cprint("Oops, you entered the wrong username/pin, we have to do this again :(","red")
-                    print("_"*50)
+                    cprint("Oops, you entered the wrong username/pin, we have to do this again :(","red",attrs=['bold'])
+                    print("\n")
                     break
             
         elif code == "xx":
