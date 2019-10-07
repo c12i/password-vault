@@ -3,6 +3,7 @@ import random
 import pyperclip
 import time
 from termcolor import colored, cprint
+from getpass import getpass
 from credential import Credential
 from user import User
 
@@ -115,14 +116,14 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
 
             if decision.startswith("n"):
                 login_name = input("Enter your username: ")
-                login_pin = input("Enter your pin: ")
+                login_pin = getpass("Enter your pin: ")
                 print("Loading ...")
                 time.sleep(1.5)
                 print("\n")
                 cprint("CONGRATULATIONS, YOUR ACCOUNT HAS BEEN CREATED","green",attrs=['bold'])
                 print("Sign into your new account")
                 sign_in_name = input("Enter your username: ")
-                sign_in_pin = input("Enter your pin: ")
+                sign_in_pin = getpass("Enter your pin: ")
                 save_user(create_user(login_name,login_pin))
                 if authenticate_user(sign_in_name,sign_in_pin):
                     print("Please wait...")
@@ -137,7 +138,7 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                     print("\n")
             else:
                 sign_in_name = input("Enter your username: ")
-                sign_in_pin = input("Enter your pin: ")
+                sign_in_pin = getpass("Enter your pin: ")
                 if authenticate_user(sign_in_name,sign_in_pin):
                     print("Please wait...")
                     time.sleep(1.5)
@@ -185,7 +186,7 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                             password = generate_password(desired_len)
                         else:
                             print("\n")
-                            password = input("Enter your password: ")
+                            password = getpass("Enter your password: ")
 
                         save_credential(create_credential(platform,username,email,password))
                         print('\n')
@@ -255,7 +256,6 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                     
                     elif key_word == "dl":
                         print("Enter the platform whose credentials you'd like to delete")
-                        print("\n")
                         platform_delete = input()
                         if check_existing_credential(platform_delete):
                             print("Please wait ...")
