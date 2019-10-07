@@ -60,7 +60,7 @@ Here is a run through of how to set up the application:
     * **help**: Provides guidance
 
 ## Known Bugs
-* Falied user login displays wrong message.
+* No known bugs
 Be sure to report more bugs by contacting me.
 
 ## Support and contact details
