@@ -252,7 +252,7 @@ $$ |   $$ |$$ /  $$ |$$ |  $$ |$$ |      $$ |
                             platform_creds = find_credentials(platform_delete)
                             delete_credential(platform_creds)
                             time.sleep(1.5)
-                            cprint("CREDENTIALS FOR {platform_creds.platform} SUCCESSFULY DELETED","green",attrs=['bold'])
+                            cprint(f"CREDENTIALS FOR {platform_creds.platform} SUCCESSFULY DELETED","green",attrs=['bold'])
                         else:
                             cprint("The credential does not exist", "red")
 
